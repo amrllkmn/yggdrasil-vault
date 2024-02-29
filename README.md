@@ -1,6 +1,6 @@
 # Yggdrasil
 
-A vault for keeping your most prized possession: your data. This is part of the [Coding Challenge](https://codingchallenges.substack.com/p/coding-challenge-48-data-privacy).
+A vault for keeping your most prized possession: your data. This is an attempt of the [Coding Challenge](https://codingchallenges.substack.com/p/coding-challenge-48-data-privacy).
 
 ## Step 1
 
