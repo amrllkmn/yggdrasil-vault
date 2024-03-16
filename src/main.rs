@@ -3,6 +3,9 @@ use tonic::transport::Server;
 
 mod proto {
     tonic::include_proto!("vault");
+
+    pub(crate) const FILE_DESCRIPTOR_SET: &[u8] =
+        tonic::include_file_descriptor_set!("vault_descriptor");
 }
 
 #[derive(Debug, Default)]
@@ -30,7 +33,12 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let addr = "[::1]:50051".parse()?;
     let vault = VaultService::default();
 
+    let service = tonic_reflection::server::Builder::configure()
+        .register_encoded_file_descriptor_set(proto::FILE_DESCRIPTOR_SET)
+        .build()?;
+
     Server::builder()
+        .add_service(service)
         .add_service(VaultServer::new(vault))
         .serve(addr)
         .await?;
