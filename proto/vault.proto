@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package vault;
+
+service Vault {
+    rpc Tokenize(TokenizeRequest) returns (TokenizeResponse);
+}
+
+message TokenizeRequest {
+    string value = 1;
+    string field = 2;
+}
+
+message TokenizeResponse {
+    string tokenized_value = 1;
+    string tokenized_field = 2;
+}
