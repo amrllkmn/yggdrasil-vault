@@ -4,6 +4,7 @@ package vault;
 
 service Vault {
     rpc Tokenize(TokenizeRequest) returns (TokenizeResponse);
+    rpc Detokenize(DetokenizeRequest) returns (DetokenizeResponse);
 }
 
 message TokenizeRequest {
@@ -14,4 +15,14 @@ message TokenizeRequest {
 message TokenizeResponse {
     string tokenized_value = 1;
     string tokenized_field = 2;
+}
+
+message DetokenizeRequest {
+    string value = 1;
+    string field = 2;
+}
+
+message DetokenizeResponse {
+    string detokenized_value = 1;
+    string detokenized_field = 2;
 }
